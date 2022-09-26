@@ -50,7 +50,7 @@ export default function TransactionForm({ fetchTransactions }) {
         <Card sx={{ minWidth: 275, marginTop: 10 }}>
             <CardContent>
                 <form onSubmit={handleSubmit}>
-                    <Typography variant="h6">
+                    <Typography variant="h6" sx={{marginBottom: 1}}>
                         Add New Transaction
                     </Typography>
                     <TextField

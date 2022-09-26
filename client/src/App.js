@@ -1,3 +1,4 @@
+import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
 import AppBar from "./components/AppBar";
 import TransactionForm from "./components/TransactionForm";
@@ -22,8 +23,11 @@ function App() {
     return (
         <div>
             <AppBar />
-            <TransactionForm fetchTransactions={fetchTransactions} />
-            <TransactionsList transactions={transactions}/>
+
+            <Container>
+                <TransactionForm fetchTransactions={fetchTransactions} />
+                <TransactionsList transactions={transactions} fetchTransactions={fetchTransactions} />
+            </Container>
             <br />
         </div>
     );
