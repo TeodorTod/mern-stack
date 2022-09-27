@@ -4,12 +4,12 @@ import AppBar from "./components/AppBar";
 
 function App() {
     return (
-        <div>
+        <>
             <AppBar />
             <Outlet />
 
             <br />
-        </div>
+        </>
     );
 }
 

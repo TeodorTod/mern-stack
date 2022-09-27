@@ -1,3 +1,17 @@
 body {
     background-color: #f5f5f5;
 }
+
+.text-white {
+    color: white;
+    text-decoration: none;
+}
+
+.link {
+    text-align: left;
+    color: #1976d2;
+}
+
+.link:hover {
+    color: #88bae0;
+}
