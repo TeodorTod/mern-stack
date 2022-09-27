@@ -84,6 +84,7 @@ export default function TransactionForm({ fetchTransactions, editTransaction }) 
                         id="outlined-basic"
                         label="Amount"
                         name="amount"
+                        type="number"
                         size="small"
                         variant="outlined"
                         value={form.amount}
