@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 
 import TransactionsRouters from "./routes/transactions.js";
 import AuthApi from "./routes/authApi.js";
+import UserApi from "./routes/userApi.js";
 import passport from "passport";
 import passportConfig from "./config/passport.js";
 import * as dotenv from 'dotenv';
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 
 app.use("/transaction", TransactionsRouters);
 app.use("/auth", AuthApi);
+app.use("/user", UserApi);
 
 await connect();
 
