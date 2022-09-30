@@ -7,6 +7,8 @@ import TransactionsRouters from "./routes/transactions.js";
 import AuthApi from "./routes/authApi.js";
 import passport from "passport";
 import passportConfig from "./config/passport.js";
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 
 const PORT = 4000;
