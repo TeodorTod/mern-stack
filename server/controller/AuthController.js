@@ -28,7 +28,7 @@ export const register = async (req, res) => {
         password: hashedPassword,
         firstName,
         lastName,
-        categories,
+        categories: categories,
     });
     await user.save();
     res.status(201).json({ message: "user is created" });

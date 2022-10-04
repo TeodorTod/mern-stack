@@ -17,19 +17,14 @@ const InitialForm = {
   amount: 0,
   description: "",
   date: new Date(),
-  category: '',
+  category_id: '',
 };
 
 export default function TransactionForm({ fetchTransctions, editTransaction }) {
-  const user = useSelector(state => state.auth.user)
+  const { categories } = useSelector(state => state.auth.user)
   const [form, setForm] = useState(InitialForm);
   const token = Cookies.get('token');
-  const categories = [
-    { label: 'Travel' },
-    { label: 'Shopping' },
-    { label: 'Investment' },
-    { label: 'Bills' },
-  ];
+
 
   useEffect(() => {
     if (editTransaction.amount !== undefined) {
@@ -84,6 +79,10 @@ export default function TransactionForm({ fetchTransctions, editTransaction }) {
     reload(res);
   }
 
+  function getCategoryNameById() {
+    return categories.find(category => category._id === form.category_id) ?? "";
+  }
+
   return (
     <Card sx={{ minWidth: 275, marginTop: 10 }}>
       <CardContent>
@@ -123,9 +122,9 @@ export default function TransactionForm({ fetchTransctions, editTransaction }) {
             />
           </LocalizationProvider>
           <Autocomplete
-            value={form.category}
+            value={getCategoryNameById()}
             onChange={(event, newValue) => {
-              setForm({ ...form, category: newValue.label });
+              setForm({ ...form, category_id: newValue._id });
             }}
 
             id="controllable-states-demo"
