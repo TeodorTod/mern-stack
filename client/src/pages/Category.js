@@ -1,6 +1,6 @@
 import DeleteSharpIcon from "@mui/icons-material/DeleteSharp";
 import EditSharpIcon from "@mui/icons-material/EditSharp";
-import { Container } from "@mui/material";
+import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -10,36 +10,42 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
-import dayjs from "dayjs";
 import Cookies from "js-cookie";
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CategoryForm from "../components/CategoryForm.js";
 import { setUser } from "../store/auth.js";
 
 export default function Category() {
-    const token = Cookies.get('token');
-    const user = useSelector(state => state.auth.user)
+    const token = Cookies.get("token");
+    const user = useSelector((state) => state.auth.user);
     const dispatch = useDispatch();
+    const [editCategory, setEditCategory] = React.useState({});
+
+    function setEdit(category) {
+        setEditCategory(category);
+    }
 
     async function remove(id) {
         const res = await fetch(`${process.env.REACT_APP_API_URL}/category/${id}`, {
-            method: 'DELETE',
+            method: "DELETE",
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${token}`,
             },
         });
 
         if (res.ok) {
             const _user = {
                 ...user,
-                categories: user.categories.filter(cat => cat._id !== id),
-            }
+                categories: user.categories.filter((cat) => cat._id != id),
+            };
             dispatch(setUser({ user: _user }));
         }
     }
 
     return (
         <Container>
+            <CategoryForm editCategory={editCategory} />
             <Typography sx={{ marginTop: 10 }} variant="h6">
                 List of Categories
             </Typography>
@@ -62,12 +68,11 @@ export default function Category() {
                                     {row.label}
                                 </TableCell>
                                 <TableCell align="center">{row.icon}</TableCell>
-
                                 <TableCell align="center">
                                     <IconButton
                                         color="primary"
                                         component="label"
-                                    // onClick={() => setEditTransaction(row)}
+                                        onClick={() => setEdit(row)}
                                     >
                                         <EditSharpIcon />
                                     </IconButton>
