@@ -13,27 +13,29 @@ import Typography from "@mui/material/Typography";
 import dayjs from "dayjs";
 import Cookies from "js-cookie";
 import * as React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../store/auth.js";
 
 export default function Category() {
     const token = Cookies.get('token');
     const user = useSelector(state => state.auth.user)
-    function categoryName(id) {
-        const category = user.categories.find((category) => category._id === id);
-        return category ? category.label : "NA";
-    }
-
-    function formatDate(date) {
-        return dayjs(date).format("DD-MM-YYYY");
-    }
+    const dispatch = useDispatch();
 
     async function remove(id) {
-        const res = await fetch(`${process.env.REACT_APP_API_URL}/category`, {
-            method: 'DELETE', 
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/category/${id}`, {
+            method: 'DELETE',
             headers: {
-                Authorizations: `Bearer ${token}`
+                Authorization: `Bearer ${token}`
+            },
+        });
+
+        if (res.ok) {
+            const _user = {
+                ...user,
+                categories: user.categories.filter(cat => cat._id !== id),
             }
-        })
+            dispatch(setUser({ user: _user }));
+        }
     }
 
     return (
@@ -73,7 +75,7 @@ export default function Category() {
                                     <IconButton
                                         color="warning"
                                         component="label"
-                                    onClick={() => remove(row._id)}
+                                        onClick={() => remove(row._id)}
                                     >
                                         <DeleteSharpIcon />
                                     </IconButton>

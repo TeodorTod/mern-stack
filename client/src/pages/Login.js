@@ -12,7 +12,7 @@ import Cookie from "js-cookie";
 import * as React from "react";
 import { useDispatch } from "react-redux";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { getUser } from "../store/auth.js";
+import { setUser } from "../store/auth.js";
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export default function Login() {
 
         if (res.ok) {
             Cookie.set("token", token);
-            dispatch(getUser(user));
+            dispatch(setUser(user));
             navigate("/");
         }
     };
