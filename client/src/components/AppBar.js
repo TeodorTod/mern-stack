@@ -11,8 +11,8 @@ import { logout } from "../store/auth.js";
 
 export default function ButtonAppBar() {
   const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
 
   function _logout() {
     Cookies.remove("token");
@@ -29,17 +29,18 @@ export default function ButtonAppBar() {
               Expensor
             </Link>
           </Typography>
+
           <Link to="/category" className="text-white">
-                <Button color="inherit">Category</Button>
-              </Link>
-          {
-            isAuthenticated &&
+            <Button color="inherit">Category</Button>
+          </Link>
+
+          {isAuthenticated && (
             <Button color="inherit" onClick={_logout}>
               Logout
             </Button>
-          }
-          {
-            !isAuthenticated &&
+          )}
+
+          {!isAuthenticated && (
             <>
               <Link to="/login" className="text-white">
                 <Button color="inherit">Login</Button>
@@ -48,7 +49,7 @@ export default function ButtonAppBar() {
                 <Button color="inherit">Register</Button>
               </Link>
             </>
-          }
+          )}
         </Toolbar>
       </AppBar>
     </Box>
