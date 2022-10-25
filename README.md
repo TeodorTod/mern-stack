@@ -10,7 +10,7 @@
     <img src="./pictures/login.jpg"/>
     <hr/>
     <h2 align="center">Register</h2>
-    <img src="./pictures/regiser.jpg"/>
+    <img src="./pictures/register.jpg"/>
     <hr/>
     <h2 align="center">Home</h2>
     <img src="./pictures/home.jpg"/>
