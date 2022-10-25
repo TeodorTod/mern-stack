@@ -54,7 +54,6 @@ Used technologies:
 
 <hr/>
 
-<hr/>
 
 Dependencies, (besides Create-React-App deps): 
 
