@@ -26,13 +26,12 @@
 <h2>Setup:</h2>
 <h3>For server side is used NodeJs with Express</h3>
 <h4>To start: npm run serve</h4>
-<hr/>
+
 <h3>For client side is used React framework with Redux</h3>
 <h4>To start: run npm start</h4>
 
 <hr/>
 
-<hr/>
 
 Used features of the platform:
 
@@ -42,18 +41,6 @@ Used features of the platform:
 - <i><b>Add expense</b></i>
 - <i><b>Update expense</b></i>
 - <i><b>Delete expense</b></i>
-
-<hr/>
-
-
-Used features of the platform:
-
-- <i><b>Responsive Design</b></i>
-- <i><b>Add unlimited expenses</b></i>
-- <i><b>Login</b></i>
-- <i><b>Register</b></i>
-- <i><b>Logout</b></i>
-
 
 
 <hr/>
